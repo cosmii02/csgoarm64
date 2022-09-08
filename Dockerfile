@@ -41,6 +41,7 @@ RUN         #dpkg --add-architecture i386 \
 USER        container
 ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
+RUN chmod 0700 entrypoint.sh
 
 COPY        ./entrypoint.sh /entrypoint.sh
 CMD         [ "/entrypoint.sh" ]
