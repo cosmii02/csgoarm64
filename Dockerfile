@@ -20,7 +20,7 @@
 # SOFTWARE.
 #
 
-FROM        --platform=qemu/arm64 debian:stable-slim
+FROM        --platform=qemu/arm64 debian:latest
 
 LABEL       author="Cosmii02" maintainer="cosmii02@cosmii02.com"
 
