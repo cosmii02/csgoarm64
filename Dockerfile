@@ -20,7 +20,7 @@
 # SOFTWARE.
 #
 
-FROM        --platform= $linux/$arm64 debian:stable-slim
+FROM        --platform=$TARGETOS/$TARGETARCH debian:stable-slim
 
 LABEL       author="Cosmii02" maintainer="cosmii02@cosmii02.com"
 
