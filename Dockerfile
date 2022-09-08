@@ -20,7 +20,7 @@
 # SOFTWARE.
 #
 
-FROM        --platform=$linux/$amd64 debian:stable-slim
+FROM        --platform=linux/amd64 debian:stable-slim
 
 LABEL       author="Cosmii02" maintainer="cosmii02@cosmii02.com"
 
