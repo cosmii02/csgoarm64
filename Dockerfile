@@ -20,7 +20,7 @@
 # SOFTWARE.
 #
 
-FROM        --platform=linux/amd64 debian:latest
+FROM        --platform=linux/i386 debian:latest
 
 LABEL       author="Cosmii02" maintainer="cosmii02@cosmii02.com"
 
