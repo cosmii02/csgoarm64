@@ -20,7 +20,6 @@
 # SOFTWARE.
 #
 
-FROM        centurylink/ca-certs
 FROM        --platform=linux/i386 debian:latest
 
 LABEL       author="Cosmii02" maintainer="cosmii02@cosmii02.com"
@@ -33,7 +32,7 @@ RUN         #dpkg --add-architecture i386 \
             && apt upgrade -y \
             && apt install -y tar curl gcc g++ lib32gcc-s1 libgcc1 libcurl4-gnutls-dev:i386 libssl1.1:i386 libcurl4:i386 lib32tinfo6 libtinfo6:i386 lib32z1 lib32stdc++6 libncurses5:i386 libcurl3-gnutls:i386 libsdl2-2.0-0:i386 iproute2 gdb libsdl1.2debian libfontconfig1 telnet net-tools netcat tzdata \
             && useradd -m -d /home/container container 
-RUN wget https://raw.githubusercontent.com/cosmii02/csgoarm64/main/steamcert.crt
+RUN curl https://raw.githubusercontent.com/cosmii02/csgoarm64/main/steamcert.crt
 ADD steamcert.crt /usr/local/share/ca-certificates/foo.crt
 RUN chmod 644 /usr/local/share/ca-certificates/foo.crt && update-ca-certificates
 
