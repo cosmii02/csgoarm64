@@ -40,6 +40,7 @@ RUN         #dpkg --add-architecture i386 \
             #&& mv rcon-0.10.2-amd64_linux/rcon /usr/local/bin/
 USER        container
 ENV         USER=container HOME=/home/container
+ENV         CPU_MHZ=6969
 WORKDIR     /home/container
 
 
