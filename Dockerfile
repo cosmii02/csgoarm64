@@ -20,7 +20,7 @@
 # SOFTWARE.
 #
 
-FROM        --platform=linux/i386 ubuntu:focal
+FROM        --platform=linux/i386 ubuntu:bionic
 
 LABEL       author="Cosmii02" maintainer="cosmii02@cosmii02.com"
 
