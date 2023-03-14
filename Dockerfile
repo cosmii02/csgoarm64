@@ -7,14 +7,14 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Download precompiled Box86 and Box64 binaries
-RUN wget "https://github.com/ptitSeb/box86/releases/download/v1.1.1/box86_1.1.1.tar.gz" && \
+RUN curl -LO "https://github.com/ptitSeb/box86/releases/download/v1.1.1/box86_1.1.1.tar.gz" && \
     tar zxvf box86_1.1.1.tar.gz && \
     mv box86 /usr/local/bin/ && \
     rm box86_1.1.1.tar.gz && \
-    wget "https://github.com/ptitSeb/box64/releases/download/v1.2.1/box64_1.2.1.tar.gz" && \
-    tar zxvf box64_1.2.1.tar.gz && \
+    curl -LO "https://github.com/ptitSeb/box64/releases/download/v0.2.2/box64_0.2.2.tar.gz" && \
+    tar zxvf box64_0.2.2.tar.gz && \
     mv box64 /usr/local/bin/ && \
-    rm box64_1.2.1.tar.gz'
+    rm box64_0.2.2.tar.gz
 
 # Install SteamCMD and CS:GO
 RUN mkdir /steamcmd && \
