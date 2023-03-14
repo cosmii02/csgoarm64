@@ -2,19 +2,9 @@ FROM debian:buster-slim
 
 # Install required dependencies
 RUN apt-get update && \
-    apt-get install -y curl git build-essential cmake libx11-dev libxext-dev libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev && \
+    apt-get install -y curl git build-essential cmake libx11-dev libxext-dev libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev box86 box64 && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
-
-# Download precompiled Box86 and Box64 binaries
-RUN curl -LO "https://github.com/ptitSeb/box86/releases/download/v0.3.0/box86_0.3.0.tar.gz" && \
-    tar zxvf box86_0.3.0.tar.gz && \
-    mv box86 /usr/local/bin/ && \
-    rm box86_0.3.0.tar.gz && \
-    curl -LO "https://github.com/ptitSeb/box64/releases/download/v0.2.2/box64_0.2.2.tar.gz" && \
-    tar zxvf box64_0.2.2.tar.gz && \
-    mv box64 /usr/local/bin/ && \
-    rm box64_0.2.2.tar.gz
 
 # Install SteamCMD and CS:GO
 RUN mkdir /steamcmd && \
