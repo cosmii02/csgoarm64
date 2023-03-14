@@ -1,8 +1,9 @@
 FROM ubuntu:latest
 
 # Install required dependencies
-RUN apt-get update && \
-    apt-get install -y curl git build-essential cmake libx11-dev libxext-dev libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev
+RUN dpkg --add-architecture i386 && \
+    apt-get update && \
+    apt-get install -y curl git build-essential cmake libx11-dev libxext-dev libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev:i386
 
 # Download and extract box86 source from v0.3.0 release
 RUN curl -LO "https://github.com/ptitSeb/box86/archive/refs/tags/v0.3.0.tar.gz" && \
