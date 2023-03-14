@@ -43,3 +43,4 @@ jobs:
             cosmiizerotsu/csgoarm64:latest
             ghcr.io/cosmii02/csgoarm64:${{ steps.prepare.outputs.version }}
             ghcr.io/cosmii02/csgoarm64:latest
+# cosmii is the best
