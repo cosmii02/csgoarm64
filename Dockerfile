@@ -1,14 +1,14 @@
 FROM ubuntu:latest
 
-# Add Box86 repository and key
+# Add Box86 repository
 RUN apt-get update && \
     apt-get install -y curl && \
-    curl -sSL https://itai-nelken.github.io/weekly-box86-debs/debian/KEY.gpg | apt-key add - && \
-    echo "deb https://itai-nelken.github.io/weekly-box86-debs/debian/ buster main" > /etc/apt/sources.list.d/box86.list
+    curl -sSL https://itai-nelken.github.io/weekly-box86-debs/debian/KEY.gpg | sudo apt-key add - && \
+    echo "deb https://itai-nelken.github.io/weekly-box86-debs/debian/ buster main" > /etc/apt/sources.list.d/box86.list && \
+    apt-get update
 
-# Install Box86 and required dependencies
-RUN apt-get update && \
-    apt-get install -y box86 git build-essential cmake libx11-dev libxext-dev libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev && \
+# Install required dependencies and Box86
+RUN apt-get install -y git build-essential cmake libx11-dev libxext-dev libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev box86 && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
