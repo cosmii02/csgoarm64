@@ -6,27 +6,15 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# Install Box86
-RUN git clone https://github.com/ptitSeb/box86 && \
-    cd box86 && \
-    mkdir build && \
-    cd build && \
-    cmake .. && \
-    make && \
-    make install && \
-    cd ../.. && \
-    rm -rf box86
-
-# Install Box64
-RUN git clone https://github.com/ptitSeb/box64 && \
-    cd box64 && \
-    mkdir build && \
-    cd build && \
-    cmake .. && \
-    make && \
-    make install && \
-    cd ../.. && \
-    rm -rf box64
+# Download precompiled Box86 and Box64 binaries
+RUN curl -LO "https://github.com/ptitSeb/box86/releases/download/v1.1.1/box86_1.1.1.tar.gz" && \
+    tar zxvf box86_1.1.1.tar.gz && \
+    mv box86 /usr/local/bin/ && \
+    rm box86_1.1.1.tar.gz && \
+    curl -LO "https://github.com/ptitSeb/box64/releases/download/v1.2.1/box64_1.2.1.tar.gz" && \
+    tar zxvf box64_1.2.1.tar.gz && \
+    mv box64 /usr/local/bin/ && \
+    rm box64_1.2.1.tar.gz
 
 # Install SteamCMD and CS:GO
 RUN mkdir /steamcmd && \
