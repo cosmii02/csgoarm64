@@ -5,8 +5,9 @@ RUN apt-get update && \
     apt-get install -y curl git build-essential cmake libx11-dev libxext-dev libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev
 
 # Clone and build Box86 from source
-RUN git clone --branch v0.3.0 https://github.com/ptitSeb/box86.git && \
+RUN git clone https://github.com/ptitSeb/box86.git && \
     cd box86 && \
+    git checkout v0.3.0 && \
     mkdir build && \
     cd build && \
     cmake .. && \
