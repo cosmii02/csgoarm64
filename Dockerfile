@@ -4,10 +4,14 @@ FROM ubuntu:latest
 RUN apt-get update && \
     apt-get install -y curl git build-essential cmake libx11-dev libxext-dev libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev
 
-# Clone and build Box86 from source
-RUN git clone https://github.com/ptitSeb/box86.git && \
-    cd box86 && \
-    git checkout v0.3.0 && \
+# Download and extract box86 source from v0.3.0 release
+RUN curl -LO "https://github.com/ptitSeb/box86/archive/refs/tags/v0.3.0.tar.gz" && \
+    tar zxvf v0.3.0.tar.gz && \
+    mv box86-0.3.0 box86 && \
+    rm v0.3.0.tar.gz
+
+# Build and install box86
+RUN cd box86 && \
     mkdir build && \
     cd build && \
     cmake .. && \
