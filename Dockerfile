@@ -10,7 +10,7 @@ RUN git clone https://github.com/ptitSeb/box86.git && \
     mkdir build && \
     cd build && \
     cmake .. && \
-    make && \
+    make VERBOSE=1 && \
     make install && \
     cd ../.. && \
     rm -rf box86
@@ -21,7 +21,7 @@ RUN git clone https://github.com/ptitSeb/box64.git && \
     mkdir build && \
     cd build && \
     cmake .. && \
-    make && \
+    make VERBOSE=1 && \
     make install && \
     cd ../.. && \
     rm -rf box64
