@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM debian:buster-slim
 
 # Install required dependencies
 RUN apt-get update && \
