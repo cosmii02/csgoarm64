@@ -3,7 +3,7 @@ FROM ubuntu:latest
 
 # Install required dependencies
 RUN apt-get update && \
-    apt-get install -y curl git build-essential cmake libx11-dev libxext-dev libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev:i386 wget gnupg
+    apt-get install -y curl git build-essential cmake libx11-dev libxext-dev libxrandr-dev libxinerama-dev libxcursor-dev wget gnupg
 
 # Install Box86
 RUN echo "deb http://itai-nelken.github.io/weekly-box86-debs/debian/ ./" > /etc/apt/sources.list.d/box86.list && \
