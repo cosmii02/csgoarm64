@@ -2,8 +2,7 @@
 FROM ubuntu:latest
 
 # Install required dependencies
-RUN dpkg --add-architecture i386 && \
-    apt-get update && \
+RUN apt-get update && \
     apt-get install -y curl git build-essential cmake libx11-dev libxext-dev libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev:i386 wget gnupg
 
 # Install Box86
