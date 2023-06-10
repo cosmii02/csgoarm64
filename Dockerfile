@@ -5,11 +5,29 @@ FROM ubuntu:latest
 RUN apt-get update && \
     apt-get install -y curl git build-essential cmake libx11-dev libxext-dev libxrandr-dev libxinerama-dev libxcursor-dev wget gnupg
 
-# Install SteamCMD and CS:GO
+# Install Box64 and Box86
+RUN git clone https://github.com/ptitSeb/box64.git && \
+    cd box64 && \
+    mkdir build && \
+    cd build && \
+    cmake .. && \
+    make && \
+    make install && \
+    cd ../.. && \
+    git clone https://github.com/ptitSeb/box86.git && \
+    cd box86 && \
+    mkdir build && \
+    cd build && \
+    cmake .. && \
+    make && \
+    make install && \
+    cd ../..
+
+# Install SteamCMD
 RUN mkdir /steamcmd && \
     cd /steamcmd && \
     curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | tar zxvf - && \
-    ./steamcmd.sh +login anonymous +force_install_dir /csgo +app_update 740 validate +quit
+    box64 ./steamcmd.sh +login anonymous +force_install_dir /csgo +app_update 740 validate +quit
 
 # Set working directory
 WORKDIR /csgo
@@ -17,5 +35,5 @@ WORKDIR /csgo
 # Set environment variable for Box64
 ENV LD_LIBRARY_PATH=/usr/local/lib/box64
 
-# Run SteamCMD and CS:GO in Box86 and Box64, respectively
-CMD ["box86", "./steamcmd.sh", "+login", "anonymous", "+app_run", "740", "-game", "csgo_linux64", "-novid"]
+# Run CS:GO server in Box86
+CMD ["box86", "./srcds_linux", "-game", "csgo", "-console", "-usercon", "+game_type", "0", "+game_mode", "1", "+mapgroup", "mg_active", "+map", "de_dust2"]
