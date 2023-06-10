@@ -19,6 +19,7 @@ RUN git clone https://github.com/ptitSeb/box64.git && \
     mkdir build && \
     cd build && \
     cmake .. && \
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-error") && \
     make && \
     make install && \
     cd ../..
