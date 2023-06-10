@@ -5,21 +5,18 @@ FROM ubuntu:latest
 RUN apt-get update && \
     apt-get install -y curl git build-essential cmake libx11-dev libxext-dev libxrandr-dev libxinerama-dev libxcursor-dev wget gnupg python3 python3-pip
 
-# Install Box64 and Box86
+# Add Box86 repository and install Box86
+RUN sudo wget https://itai-nelken.github.io/weekly-box86-debs/debian/box86.list -O /etc/apt/sources.list.d/box86.list && \
+    wget -qO- https://itai-nelken.github.io/weekly-box86-debs/debian/KEY.gpg | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/box86-debs-archive-keyring.gpg && \
+    apt-get update && \
+    apt-get install -y box86
+
+# Compile and install Box64
 RUN git clone https://github.com/ptitSeb/box64.git && \
     cd box64 && \
     mkdir build && \
     cd build && \
     cmake .. && \
-    make && \
-    make install && \
-    cd ../.. && \
-    git clone https://github.com/ptitSeb/box86.git && \
-    cd box86 && \
-    mkdir build && \
-    cd build && \
-    cmake .. && \
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-error") && \
     make && \
     make install && \
     cd ../..
