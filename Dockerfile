@@ -3,7 +3,7 @@ FROM ubuntu:latest
 
 # Install required dependencies
 RUN apt-get update && \
-    apt-get install -y curl git build-essential cmake libx11-dev libxext-dev libxrandr-dev libxinerama-dev libxcursor-dev wget gnupg
+    apt-get install -y curl git build-essential cmake libx11-dev libxext-dev libxrandr-dev libxinerama-dev libxcursor-dev wget gnupg python3 python3-pip
 
 # Install Box64 and Box86
 RUN git clone https://github.com/ptitSeb/box64.git && \
