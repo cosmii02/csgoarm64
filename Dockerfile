@@ -10,8 +10,7 @@ RUN echo "deb http://archive.ubuntu.com/ubuntu/ jammy main restricted universe m
     echo "deb http://archive.canonical.com/ubuntu/ jammy partner" >> /etc/apt/sources.list
 
 # Install required dependencies
-RUN apt-get update && \
-    apt-get install -y curl git build-essential cmake libx11-dev libxext-dev libxrandr-dev libxinerama-dev libxcursor-dev wget gnupg python3 python3-pip
+RUN apt-get install -y curl git build-essential cmake libx11-dev libxext-dev libxrandr-dev libxinerama-dev libxcursor-dev wget gnupg python3 python3-pip
 
 RUN apt-get update && \
     wget https://itai-nelken.github.io/weekly-box86-debs/debian/box86.list -O /etc/apt/sources.list.d/box86.list && \
