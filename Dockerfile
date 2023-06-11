@@ -5,8 +5,6 @@ FROM weilbyte/box:arm64v8-debian-11
 # Install required dependencies
 RUN apt update && apt install -y curl git build-essential cmake libx11-dev libxext-dev libxrandr-dev libxinerama-dev libxcursor-dev wget gnupg python3 python3-pip
 
-RUN apt-get update 
-    RUN box86 apt install libc6:i386 \
 # Install SteamCMD
 RUN mkdir /steamcmd && \
     cd /steamcmd && \
