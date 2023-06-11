@@ -2,13 +2,15 @@
 FROM ubuntu:latest
 
 # Install required dependencies
-RUN apt-get update && \
-    apt-get install -y curl git build-essential cmake libx11-dev libxext-dev libxrandr-dev libxinerama-dev libxcursor-dev wget gnupg python3 python3-pip
+RUN dpkg --add-architecture armhf && \
+    apt-get update && \
+    apt-get install -y curl git build-essential cmake libx11-dev libxext-dev libxrandr-dev libxinerama-dev libxcursor-dev wget gnupg python3 python3-pip libc6:armhf
 
 RUN apt-get update && \
     wget https://itai-nelken.github.io/weekly-box86-debs/debian/box86.list -O /etc/apt/sources.list.d/box86.list && \
     wget -qO- https://itai-nelken.github.io/weekly-box86-debs/debian/KEY.gpg | gpg --dearmor -o /etc/apt/trusted.gpg.d/box86-debs-archive-keyring.gpg && \
     apt-get update && apt-get install box86 -y
+
 # Install SteamCMD
 RUN mkdir /steamcmd && \
     cd /steamcmd && \
