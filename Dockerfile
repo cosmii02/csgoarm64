@@ -1,6 +1,12 @@
 # Use the latest Ubuntu image
 FROM ubuntu:latest
 
+RUN echo "deb http://archive.ubuntu.com/ubuntu/ jammy main restricted universe multiverse" >> /etc/apt/sources.list && \
+    echo "deb http://archive.ubuntu.com/ubuntu/ jammy-updates main restricted universe multiverse" >> /etc/apt/sources.list && \
+    echo "deb http://archive.ubuntu.com/ubuntu/ jammy-security main restricted universe multiverse" >> /etc/apt/sources.list && \
+    echo "deb http://archive.ubuntu.com/ubuntu/ jammy-backports main restricted universe multiverse" >> /etc/apt/sources.list && \
+    echo "deb http://archive.canonical.com/ubuntu/ jammy partner" >> /etc/apt/sources.list
+
 # Install required dependencies
 RUN dpkg --add-architecture armhf && \
     dpkg --add-architecture i386 && \
