@@ -8,7 +8,7 @@ RUN apt update && apt install -y curl git build-essential cmake libx11-dev libxe
 # add i386 architecture
 RUN dpkg --add-architecture i386 && \
     apt update && \
-    apt install -y libc6:i386
+    apt install -y libc6:i386 libstdc++6:i386
 
 # Install SteamCMD
 RUN mkdir /steamcmd && \
