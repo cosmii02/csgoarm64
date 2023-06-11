@@ -1,5 +1,5 @@
 # Use the latest Ubuntu image
-FROM ubuntu:latest
+FROM ubuntu:jammy
 
 RUN rm -rf /etc/apt/sources.list
 
