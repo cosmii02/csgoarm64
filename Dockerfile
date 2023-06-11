@@ -14,7 +14,7 @@ RUN dpkg --add-architecture i386 && \
 RUN mkdir /steamcmd && \
     cd /steamcmd && \
     curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | tar zxvf - && \
-    box86 ./steamcmd.sh +login anonymous +force_install_dir /csgo +app_update 740 validate +quit
+    ./steamcmd.sh +login anonymous +force_install_dir /csgo +app_update 740 validate +quit
 
 # Set working directory
 WORKDIR /csgo
