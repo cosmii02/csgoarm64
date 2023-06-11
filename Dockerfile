@@ -3,8 +3,9 @@ FROM ubuntu:latest
 
 # Install required dependencies
 RUN dpkg --add-architecture armhf && \
+    dpkg --add-architecture i386 && \
     apt-get update && \
-    apt-get install -y curl git build-essential cmake libx11-dev libxext-dev libxrandr-dev libxinerama-dev libxcursor-dev wget gnupg python3 python3-pip libc6:armhf
+    apt-get install -y curl git build-essential cmake libx11-dev libxext-dev libxrandr-dev libxinerama-dev libxcursor-dev wget gnupg python3 python3-pip libc6:i386
 
 RUN apt-get update && \
     wget https://itai-nelken.github.io/weekly-box86-debs/debian/box86.list -O /etc/apt/sources.list.d/box86.list && \
