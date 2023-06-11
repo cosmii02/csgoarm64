@@ -10,6 +10,9 @@ RUN dpkg --add-architecture i386 && \
     apt update && \
     apt install -y libc6:i386 libstdc++6:i386
 
+# set LD library path to /usr/local/bin/box86
+ENV LD_LIBRARY_PATH=/usr/local/bin/box86
+
 # Install SteamCMD
 RUN mkdir /steamcmd && \
     cd /steamcmd && \
