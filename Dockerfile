@@ -9,7 +9,6 @@ RUN echo "deb http://archive.ubuntu.com/ubuntu/ jammy main restricted universe m
 
 # Install required dependencies
 RUN dpkg --add-architecture armhf && \
-    dpkg --add-architecture i386 && \
     apt-get update && \
     apt-get install -y curl git build-essential cmake libx11-dev libxext-dev libxrandr-dev libxinerama-dev libxcursor-dev wget gnupg python3 python3-pip libc6:i386
 
