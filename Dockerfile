@@ -8,8 +8,7 @@ RUN echo "deb http://archive.ubuntu.com/ubuntu/ jammy main restricted universe m
     echo "deb http://archive.canonical.com/ubuntu/ jammy partner" >> /etc/apt/sources.list
 
 # Install required dependencies
-RUN dpkg --add-architecture armhf && \
-    apt-get update && \
+RUN apt-get update && \
     apt-get install -y curl git build-essential cmake libx11-dev libxext-dev libxrandr-dev libxinerama-dev libxcursor-dev wget gnupg python3 python3-pip libc6:i386
 
 RUN apt-get update && \
@@ -25,9 +24,6 @@ RUN mkdir /steamcmd && \
 
 # Set working directory
 WORKDIR /csgo
-
-# Set environment variable for Box86
-ENV LD_LIBRARY_PATH=/usr/local/bin/box86
 
 # Run CS:GO server in Box86
 CMD ["box86", "./srcds_linux", "-game", "csgo", "-console", "-usercon", "+game_type", "0", "+game_mode", "1", "+mapgroup", "mg_active", "+map", "de_dust2"]
